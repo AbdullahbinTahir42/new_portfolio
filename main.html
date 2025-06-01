@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abdullah Tahir - Web & AI Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230ea5e9'%3E%3C/rect%3E%3Ctext x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='60' font-family='Inter, sans-serif' font-weight='bold' fill='white'%3EA%3C/text%3E%3C/svg%3E"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+        background-color: #f8fafc;
+      }
+      .section-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #1e293b;
+      }
+      .card {
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        overflow: hidden;
+        transform: translateY(0);
+        transition: all 300ms ease;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      }
+      .skill-badge {
+        background-color: #e0f2fe;
+        color: #0369a1;
+        padding: 0.5rem 1rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      /* Enhanced Navbar Styling */
+      nav {
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 20;
+        top: 0;
+        transition: all 300ms ease;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      nav.scrolled {
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        background-color: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      nav .nav-container {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      nav .nav-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #0284c7;
+        transition: color 200ms ease;
+        position: relative;
+        display: inline-block;
+      }
+      nav .nav-brand:hover {
+        color: #0369a1;
+      }
+
+      nav .nav-brand::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #0ea5e9;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      nav .nav-brand:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* Desktop Nav Link Styling */
+      nav .nav-links-group {
+        display: none;
+        gap: 0.25rem;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        nav .nav-links-group {
+          display: flex;
+        }
+      }
+
+      nav .nav-links-group a.nav-link {
+        position: relative;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4b5563;
+        transition: color 200ms ease;
+        overflow: hidden;
+      }
+      nav .nav-links-group a.nav-link:hover {
+        color: #0284c7;
+      }
+
+      nav .nav-links-group a.nav-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(56, 182, 255, 0.1) 0%,
+          rgba(14, 165, 233, 0.05) 100%
+        );
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+        z-index: -1;
+        border-radius: 4px;
+      }
+
+      nav .nav-links-group a.nav-link:hover::before {
+        transform: translateY(0);
+      }
+
+      nav .nav-links-group a.nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #0ea5e9;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      nav .nav-links-group a.nav-link:hover::after {
+        width: 70%;
+      }
+
+      nav .nav-links-group a.nav-link.active {
+        color: #0284c7;
+        font-weight: 600;
+      }
+
+      nav .nav-links-group a.nav-link.active::before {
+        transform: translateY(0);
+        background: linear-gradient(
+          135deg,
+          rgba(56, 182, 255, 0.15) 0%,
+          rgba(14, 165, 233, 0.1) 100%
+        );
+      }
+
+      nav .nav-links-group a.nav-link.active::after {
+        width: 70%;
+      }
+
+      /* Mobile navigation toggle */
+      .mobile-nav-toggle {
+        display: block;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        color: #6b7280;
+        transition: all 300ms ease;
+      }
+      .mobile-nav-toggle:hover {
+        color: #0284c7;
+        background-color: #e0f2fe;
+      }
+      .mobile-nav-toggle:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+        box-shadow: 0 0 0 2px #e0f2fe;
+      }
+      @media (min-width: 768px) {
+        .mobile-nav-toggle {
+          display: none;
+        }
+      }
+
+      .mobile-nav-toggle:hover {
+        transform: rotate(90deg);
+      }
+
+      .mobile-nav-toggle.active {
+        transform: rotate(90deg);
+      }
+
+      /* Mobile Menu Styling */
+      #mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        border-radius: 0 0 0.5rem 0.5rem;
+        border-top: 1px solid #e5e7eb;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          opacity 0.3s ease;
+        opacity: 0;
+      }
+      @media (min-width: 768px) {
+        #mobile-menu {
+          display: none;
+        }
+      }
+
+      #mobile-menu.open {
+        max-height: 500px;
+        opacity: 1;
+        padding: 1rem 0;
+        display: block;
+      }
+
+      #mobile-menu a.nav-link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        text-align: left;
+        padding: 1rem 1.5rem;
+        font-size: 0.875rem;
+        color: #374151;
+        transition: all 150ms ease;
+      }
+      #mobile-menu a.nav-link:hover {
+        background-color: #f0f9ff;
+        color: #0284c7;
+      }
+
+      #mobile-menu a.nav-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(14, 165, 233, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      #mobile-menu a.nav-link:hover::before {
+        left: 100%;
+      }
+
+      #mobile-menu a.nav-link i {
+        margin-right: 0.75rem;
+        font-size: 1rem;
+        color: #9ca3af;
+        transition: color 150ms ease;
+        min-width: 24px;
+        text-align: center;
+      }
+      #mobile-menu a.nav-link:hover i {
+        color: #0284c7;
+      }
+
+      #mobile-menu a.nav-link.active {
+        background-color: #e0f2fe;
+        color: #0369a1;
+        font-weight: 600;
+      }
+
+      #mobile-menu a.nav-link.active i {
+        color: #0284c7;
+      }
+
+      /* Floating Nav Indicator */
+      .nav-indicator {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #38b6ff, #0ea5e9, #0284c7);
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.2s ease;
+        z-index: 100;
+      }
+
+      .hero-gradient {
+        background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+      }
+      .project-link {
+        display: inline-block;
+        margin-top: 1rem;
+        background-color: #0ea5e9;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: background-color 200ms ease;
+      }
+      .project-link:hover {
+        background-color: #0284c7;
+      }
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Enhanced Cursor Glow/Aura Styles */
+      #cursor-aura {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 15px 5px rgba(14, 165, 233, 0.3),
+          0 0 5px 2px rgba(14, 165, 233, 0.2);
+        background-color: rgba(14, 165, 233, 0.05);
+        transition: transform 0.15s ease-out, box-shadow 0.2s ease-out,
+          background-color 0.2s ease-out, opacity 0.3s ease-out,
+          width 0.2s ease-out, height 0.2s ease-out;
+        will-change: transform, box-shadow, opacity;
+        mix-blend-mode: multiply;
+      }
+
+      #cursor-aura.active {
+        width: 40px;
+        height: 40px;
+        box-shadow: 0 0 25px 10px rgba(14, 165, 233, 0.5),
+          0 0 15px 5px rgba(14, 165, 233, 0.3);
+        background-color: rgba(14, 165, 233, 0.1);
+      }
+
+      #cursor-aura.hover-effect {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(14, 165, 233, 0.15);
+        box-shadow: 0 0 30px 15px rgba(14, 165, 233, 0.6);
+      }
+
+      @media (hover: none) {
+        #cursor-aura {
+          display: none;
+        }
+      }
+
+      /* Pulse animation for call-to-action elements */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse-animate {
+        animation: pulse 2s infinite;
+      }
+
+      /* Floating animation for profile image */
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      .float-animate {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Gradient text for headings */
+      .gradient-text {
+        background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body class="text-gray-700">
+    <div id="cursor-aura"></div>
+    <div class="nav-indicator"></div>
+
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">Abdullah Tahir</a>
+
+        <div class="nav-links-group">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <a
+            href="https://github.com/AbdullahbinTahir42"
+            target="_blank"
+            class="px-3 py-2 text-gray-600 hover:text-sky-600 transition-colors"
+          >
+            <i class="fab fa-github text-lg"></i>
+          </a>
+        </div>
+
+        <button
+          id="mobile-nav-toggler"
+          class="mobile-nav-toggle"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+
+      <div id="mobile-menu">
+        <a href="#about" class="nav-link group"
+          ><i class="fas fa-user"></i>About</a
+        >
+        <a href="#skills" class="nav-link group"
+          ><i class="fas fa-cogs"></i>Skills</a
+        >
+        <a href="#projects" class="nav-link group"
+          ><i class="fas fa-project-diagram"></i>Projects</a
+        >
+        <a href="#education" class="nav-link group"
+          ><i class="fas fa-graduation-cap"></i>Education</a
+        >
+        <a href="#contact" class="nav-link group"
+          ><i class="fas fa-envelope"></i>Contact</a
+        >
+        <a
+          href="https://github.com/AbdullahbinTahir42"
+          target="_blank"
+          class="nav-link group"
+          ><i class="fab fa-github"></i>GitHub</a
+        >
+      </div>
+    </nav>
+
+    <section id="about" class="pt-28 pb-20 hero-gradient fade-in-section">
+      <div class="container mx-auto px-6 text-center">
+        <img
+          src="https://placehold.co/150x150/0EA5E9/FFFFFF?text=AT&font=Inter"
+          alt="Abdullah Tahir"
+          class="w-40 h-40 rounded-full mx-auto mb-8 shadow-xl border-4 border-white float-animate"
+        />
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">
+          Abdullah Tahir
+        </h1>
+        <p class="text-2xl text-gray-600 mb-8">Web & AI Developer</p>
+        <p
+          class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg mb-10"
+        >
+          I'm a backend developer skilled in Python, Django, and FastAPI. I
+          build scalable web apps and APIs, and have hands-on experience
+          integrating machine learning features into backend systems. I focus on
+          clean code, database design, and continuous improvement.
+        </p>
+        <div class="flex justify-center space-x-6">
+          <a
+            href="https://linkedin.com/in/abdullah-tahir-23ntucs1004"
+            target="_blank"
+            class="text-sky-600 hover:text-sky-800 transition-all duration-300 transform hover:scale-110"
+          >
+            <i class="fab fa-linkedin fa-3x"></i>
+          </a>
+          <a
+            href="https://github.com/AbdullahbinTahir42"
+            target="_blank"
+            class="text-gray-700 hover:text-gray-900 transition-all duration-300 transform hover:scale-110"
+          >
+            <i class="fab fa-github fa-3x"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-white fade-in-section">
+      <div class="container mx-auto px-6">
+        <h2 class="section-title">My Expertise</h2>
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-5xl mx-auto"
+        >
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-sky-500 mb-4">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Python Programming</h3>
+            <span class="skill-badge">Good</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-green-500 mb-4">
+              <i class="fab fa-python"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Django Framework</h3>
+            <span class="skill-badge">Good</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-blue-500 mb-4">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">FastAPI Framework</h3>
+            <span class="skill-badge">Good</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-indigo-500 mb-4">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">SQL & Databases</h3>
+            <span class="skill-badge">Good</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-purple-500 mb-4">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">RESTful APIs</h3>
+            <span class="skill-badge">Moderate</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-orange-500 mb-4">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">HTML/CSS</h3>
+            <span class="skill-badge">Moderate</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-pink-500 mb-4">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">AI/ML Integration</h3>
+            <span class="skill-badge">Hands-on</span>
+          </div>
+          <div class="card p-6 text-center">
+            <div class="text-4xl text-red-500 mb-4">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3 class="font-semibold text-xl mb-2">Matplotlib</h3>
+            <span class="skill-badge">Moderate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-100 fade-in-section">
+      <div class="container mx-auto px-6">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/A5B4FC/3730A3?text=Resume+Analyzer&font=Inter"
+              alt="Resume Analyzer Project"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Resume Analyzer
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A Python and Machine Learning project to analyze CVs (3rd
+                semester project).
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">Python</span>
+                <span class="skill-badge mr-2 mb-2 inline-block"
+                  >Machine Learning</span
+                >
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/3rd-Semester-project"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/86EFAC/166534?text=Online+Study+App&font=Inter"
+              alt="Online Study App Project"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Online Study App
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Built using Django backend, similar to an online rooms system.
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">Python</span>
+                <span class="skill-badge mr-2 mb-2 inline-block">Django</span>
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/studyapp"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/FCD34D/B45309?text=Inventory+System&font=Inter"
+              alt="Inventory Management System Project"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Inventory Management System
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Built using FastAPI and SQLAlchemy with SQLite for managing
+                products and stock via RESTful APIs.
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">Python</span>
+                <span class="skill-badge mr-2 mb-2 inline-block">FastAPI</span>
+                <span class="skill-badge mr-2 mb-2 inline-block"
+                  >SQLAlchemy</span
+                >
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/inventory_system_FastAPI"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/FDA4AF/9F1239?text=Candy+Crush&font=Inter"
+              alt="Candy Crush Game"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Candy Crush-inspired Game
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Made in C++ using a function-based approach (1st semester
+                project).
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">C++</span>
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/First-Semester"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/7DD3FC/075985?text=Space+Invaders&font=Inter"
+              alt="Space Invader Game"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Space Invader Game
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Developed using Pygame for practicing 2D game development.
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">Python</span>
+                <span class="skill-badge mr-2 mb-2 inline-block">Pygame</span>
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/SpaceInvader"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://placehold.co/600x400/93C5FD/1E40AF?text=Finance+Tracker+App&font=Inter"
+              alt="Finance Tracker Project"
+              class="w-full h-52 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+                Finance Tracker
+              </h3>
+              <p class="text-gray-600 mb-4">
+                A Python application for tracking personal finances, featuring
+                data visualization with Matplotlib.
+              </p>
+              <div class="mb-4">
+                <span class="skill-badge mr-2 mb-2 inline-block">Python</span>
+                <span class="skill-badge mr-2 mb-2 inline-block"
+                  >Matplotlib</span
+                >
+              </div>
+              <a
+                href="https://github.com/AbdullahbinTahir42/LearnPython"
+                target="_blank"
+                class="project-link pulse-animate"
+                ><i class="fab fa-github mr-2"></i>View Code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="py-20 bg-white fade-in-section">
+      <div class="container mx-auto px-6">
+        <h2 class="section-title">Education</h2>
+        <div
+          class="max-w-3xl mx-auto bg-sky-50 rounded-xl shadow-lg p-10 border border-sky-200"
+        >
+          <div class="flex items-start md:items-center">
+            <div
+              class="bg-sky-500 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl mr-6 shadow-md"
+            >
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold text-sky-700 mb-1">
+                BS Artificial Intelligence
+              </h3>
+              <p class="text-gray-700 text-lg">
+                National Textile University (NTU), Faisalabad
+              </p>
+              <p class="text-md text-gray-500">Sep 2023 – Present</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-sky-700 text-sky-50 fade-in-section">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+        <p class="max-w-lg mx-auto mb-10 text-lg">
+          I'm always open to discussing new projects, creative ideas, or
+          opportunities to be part of your visions. Feel free to reach out!
+        </p>
+        <div
+          class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8 mb-12 text-lg"
+        >
+          <a
+            href="mailto:abdullahbintahir42@gmail.com"
+            class="flex items-center hover:text-sky-200 transition-colors duration-200"
+          >
+            <i class="fas fa-envelope fa-fw mr-3 text-xl"></i>
+            abdullahbintahir42@gmail.com
+          </a>
+          <span class="flex items-center">
+            <i class="fas fa-phone fa-fw mr-3 text-xl"></i> +92 304 5972323
+          </span>
+          <span class="flex items-center">
+            <i class="fas fa-map-marker-alt fa-fw mr-3 text-xl"></i> Faisalabad,
+            Pakistan
+          </span>
+        </div>
+        <div class="flex justify-center space-x-8">
+          <a
+            href="https://linkedin.com/in/abdullah-tahir-23ntucs1004"
+            target="_blank"
+            class="hover:text-sky-200 transition-all duration-300 transform hover:scale-110"
+          >
+            <i class="fab fa-linkedin fa-4x"></i>
+          </a>
+          <a
+            href="https://github.com/AbdullahbinTahir42"
+            target="_blank"
+            class="hover:text-sky-200 transition-all duration-300 transform hover:scale-110"
+          >
+            <i class="fab fa-github fa-4x"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+      <p class="mb-2">
+        &copy; <span id="currentYear"></span> Abdullah Tahir. All rights
+        reserved.
+      </p>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Enhanced Navbar Scroll Effects
+      const navbar = document.getElementById("navbar");
+      const navIndicator = document.querySelector(".nav-indicator");
+      let lastScrollTop = 0;
+
+      // Scroll progress indicator
+      window.addEventListener("scroll", function () {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (scrollTop / height) * 100;
+        navIndicator.style.transform = `scaleX(${scrolled / 100})`;
+
+        // Navbar shrink effect on scroll down
+        if (scrollTop > lastScrollTop && scrollTop > 50) {
+          navbar.classList.add("scrolled");
+          navbar.style.paddingTop = "0.5rem";
+          navbar.style.paddingBottom = "0.5rem";
+        } else if (scrollTop < lastScrollTop || scrollTop <= 50) {
+          if (scrollTop <= 50) {
+            navbar.classList.remove("scrolled");
+          }
+          navbar.style.paddingTop = "0.75rem";
+          navbar.style.paddingBottom = "0.75rem";
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+        updateActiveNavLink();
+      });
+
+      // Smooth scrolling & Active Nav Link
+      const allNavLinks = document.querySelectorAll(
+        ".nav-links-group a.nav-link, #mobile-menu a.nav-link"
+      );
+      const sections = document.querySelectorAll("section");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileNavToggler = document.getElementById("mobile-nav-toggler");
+
+      function updateActiveNavLink() {
+        let currentSectionId = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - navbar.offsetHeight - 50) {
+            currentSectionId = section.getAttribute("id");
+          }
+        });
+
+        allNavLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSectionId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      function smoothScrollToTarget(targetId) {
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          const topPos = targetSection.offsetTop - navbar.offsetHeight + 1;
+          window.scrollTo({
+            top: topPos,
+            behavior: "smooth",
+          });
+        }
+      }
+
+      allNavLinks.forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetHref = this.getAttribute("href");
+          smoothScrollToTarget(targetHref);
+
+          // Close mobile menu if open
+          if (
+            this.closest("#mobile-menu") &&
+            mobileMenu.classList.contains("open")
+          ) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // Initialize active link
+      updateActiveNavLink();
+
+      // Intersection Observer for fade-in animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document.querySelectorAll(".fade-in-section").forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Enhanced Cursor Aura Effect
+      const cursorAura = document.getElementById("cursor-aura");
+      if (cursorAura) {
+        document.addEventListener("mousemove", (e) => {
+          requestAnimationFrame(() => {
+            cursorAura.style.left = `${e.clientX}px`;
+            cursorAura.style.top = `${e.clientY}px`;
+          });
+        });
+
+        document.addEventListener("mousedown", () => {
+          cursorAura.classList.add("active");
+        });
+
+        document.addEventListener("mouseup", () => {
+          cursorAura.classList.remove("active");
+        });
+
+        document.addEventListener("mouseleave", () => {
+          cursorAura.style.opacity = "0";
+        });
+
+        document.addEventListener("mouseenter", () => {
+          cursorAura.style.opacity = "1";
+        });
+
+        // Add hover effect for interactive elements
+        const interactiveElements = document.querySelectorAll(
+          "a, button, .card, .project-link, .nav-link"
+        );
+        interactiveElements.forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cursorAura.classList.add("hover-effect");
+          });
+          el.addEventListener("mouseleave", () => {
+            cursorAura.classList.remove("hover-effect");
+          });
+        });
+      }
+
+      // Mobile navigation toggle with enhanced animation
+      function toggleMobileMenu() {
+        const isExpanded =
+          mobileNavToggler.getAttribute("aria-expanded") === "true" || false;
+        mobileNavToggler.setAttribute("aria-expanded", !isExpanded);
+        mobileMenu.classList.toggle("open");
+
+        const icon = mobileNavToggler.querySelector("i");
+        if (!isExpanded) {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+          mobileNavToggler.classList.add("active");
+        } else {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+          mobileNavToggler.classList.remove("active");
+        }
+      }
+
+      if (mobileNavToggler) {
+        mobileNavToggler.addEventListener("click", toggleMobileMenu);
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", function (e) {
+        if (
+          !mobileMenu.contains(e.target) &&
+          !mobileNavToggler.contains(e.target)
+        ) {
+          if (mobileMenu.classList.contains("open")) {
+            toggleMobileMenu();
+          }
+        }
+      });
+
+      // Add pulse animation to project links on hover
+      const projectLinks = document.querySelectorAll(".project-link");
+      projectLinks.forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          link.classList.add("pulse-animate");
+        });
+        link.addEventListener("animationend", () => {
+          link.classList.remove("pulse-animate");
+        });
+      });
+    </script>
+  </body>
+</html>
