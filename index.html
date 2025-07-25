@@ -5,6 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Abdullah Tahir - Web & AI Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                100: '#E5E7EB',
+                200: '#D1D5DB',
+                300: '#9CA3AF',
+                400: '#6B7280',
+                500: '#4B5563',
+                600: '#374151',
+                700: '#1F2937',
+                800: '#111827',
+                900: '#0F172A',
+              },
+              primary: {
+                100: '#E0F2FE',
+                200: '#BAE6FD',
+                300: '#7DD3FC',
+                400: '#38BDF8',
+                500: '#0EA5E9',
+                600: '#0284C7',
+                700: '#0369A1',
+                800: '#075985',
+                900: '#0C4A6E',
+              }
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'text-gradient': 'text-gradient 1.5s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              text-gradient: {
+                '0%': { 'background-position': '0% 50%' },
+                '100%': { 'background-position': '100% 50%' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
     <link
       rel="icon"
       type="image/svg+xml"
@@ -23,57 +76,69 @@
       body {
         font-family: "Inter", sans-serif;
         scroll-behavior: smooth;
-        background-color: #f8fafc;
+        background-color: #111827;
+        color: #E5E7EB;
       }
       .section-title {
         font-size: 1.875rem;
         font-weight: 700;
         text-align: center;
         margin-bottom: 3rem;
-        color: #1e293b;
+        color: #E5E7EB;
+        position: relative;
+        display: inline-block;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, #0EA5E9, #3B82F6);
+        border-radius: 3px;
       }
       .card {
-        background-color: white;
+        background-color: #1F2937;
         border-radius: 1rem;
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
         overflow: hidden;
         transform: translateY(0);
         transition: all 300ms ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
       .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        border-color: rgba(14, 165, 233, 0.3);
       }
       .skill-badge {
-        background-color: #e0f2fe;
-        color: #0369a1;
+        background-color: rgba(14, 165, 233, 0.1);
+        color: #7DD3FC;
         padding: 0.5rem 1rem;
         border-radius: 9999px;
         font-size: 0.875rem;
         font-weight: 600;
+        border: 1px solid rgba(14, 165, 233, 0.2);
       }
 
       /* Enhanced Navbar Styling */
       nav {
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(17, 24, 39, 0.95);
         backdrop-filter: blur(20px);
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
         position: fixed;
         width: 100%;
         z-index: 20;
         top: 0;
         transition: all 300ms ease;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
 
       nav.scrolled {
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        background-color: rgba(255, 255, 255, 0.98);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+        background-color: rgba(17, 24, 39, 0.98);
       }
 
       nav .nav-container {
@@ -91,13 +156,13 @@
       nav .nav-brand {
         font-size: 1.5rem;
         font-weight: 700;
-        color: #0284c7;
+        color: #38BDF8;
         transition: color 200ms ease;
         position: relative;
         display: inline-block;
       }
       nav .nav-brand:hover {
-        color: #0369a1;
+        color: #7DD3FC;
       }
 
       nav .nav-brand::after {
@@ -107,7 +172,7 @@
         height: 2px;
         bottom: -2px;
         left: 0;
-        background-color: #0ea5e9;
+        background-color: #0EA5E9;
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 0.3s ease-in-out;
@@ -135,12 +200,12 @@
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
         font-weight: 500;
-        color: #4b5563;
-        transition: color 200ms ease;
+        color: #9CA3AF;
+        transition: all 200ms ease;
         overflow: hidden;
       }
       nav .nav-links-group a.nav-link:hover {
-        color: #0284c7;
+        color: #38BDF8;
       }
 
       nav .nav-links-group a.nav-link::before {
@@ -172,7 +237,7 @@
         left: 50%;
         width: 0;
         height: 2px;
-        background-color: #0ea5e9;
+        background-color: #0EA5E9;
         transform: translateX(-50%);
         transition: width 0.3s ease;
       }
@@ -182,7 +247,7 @@
       }
 
       nav .nav-links-group a.nav-link.active {
-        color: #0284c7;
+        color: #38BDF8;
         font-weight: 600;
       }
 
@@ -204,17 +269,17 @@
         display: block;
         padding: 0.5rem;
         border-radius: 0.375rem;
-        color: #6b7280;
+        color: #9CA3AF;
         transition: all 300ms ease;
       }
       .mobile-nav-toggle:hover {
-        color: #0284c7;
-        background-color: #e0f2fe;
+        color: #38BDF8;
+        background-color: rgba(14, 165, 233, 0.1);
       }
       .mobile-nav-toggle:focus {
         outline: 2px solid transparent;
         outline-offset: 2px;
-        box-shadow: 0 0 0 2px #e0f2fe;
+        box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.3);
       }
       @media (min-width: 768px) {
         .mobile-nav-toggle {
@@ -237,11 +302,10 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: white;
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-          0 8px 10px -6px rgb(0 0 0 / 0.1);
+        background-color: #1F2937;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
         border-radius: 0 0 0.5rem 0.5rem;
-        border-top: 1px solid #e5e7eb;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
@@ -268,12 +332,12 @@
         text-align: left;
         padding: 1rem 1.5rem;
         font-size: 0.875rem;
-        color: #374151;
+        color: #D1D5DB;
         transition: all 150ms ease;
       }
       #mobile-menu a.nav-link:hover {
-        background-color: #f0f9ff;
-        color: #0284c7;
+        background-color: rgba(14, 165, 233, 0.1);
+        color: #38BDF8;
       }
 
       #mobile-menu a.nav-link::before {
@@ -299,23 +363,23 @@
       #mobile-menu a.nav-link i {
         margin-right: 0.75rem;
         font-size: 1rem;
-        color: #9ca3af;
+        color: #6B7280;
         transition: color 150ms ease;
         min-width: 24px;
         text-align: center;
       }
       #mobile-menu a.nav-link:hover i {
-        color: #0284c7;
+        color: #38BDF8;
       }
 
       #mobile-menu a.nav-link.active {
-        background-color: #e0f2fe;
-        color: #0369a1;
+        background-color: rgba(14, 165, 233, 0.2);
+        color: #7DD3FC;
         font-weight: 600;
       }
 
       #mobile-menu a.nav-link.active i {
-        color: #0284c7;
+        color: #38BDF8;
       }
 
       /* Floating Nav Indicator */
@@ -333,22 +397,30 @@
       }
 
       .hero-gradient {
-        background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%), 
+                    url('https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=2232&auto=format&fit=crop') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
       }
+      
       .project-link {
         display: inline-block;
         margin-top: 1rem;
-        background-color: #0ea5e9;
+        background-color: #0EA5E9;
         color: white;
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
         font-size: 0.875rem;
         font-weight: 500;
-        transition: background-color 200ms ease;
+        transition: all 200ms ease;
+        border: 1px solid rgba(14, 165, 233, 0.3);
       }
       .project-link:hover {
-        background-color: #0284c7;
+        background-color: #0284C7;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.3), 0 2px 4px -2px rgba(2, 132, 199, 0.3);
       }
+      
       .fade-in-section {
         opacity: 0;
         transform: translateY(20px);
@@ -377,7 +449,7 @@
           background-color 0.2s ease-out, opacity 0.3s ease-out,
           width 0.2s ease-out, height 0.2s ease-out;
         will-change: transform, box-shadow, opacity;
-        mix-blend-mode: multiply;
+        mix-blend-mode: screen;
       }
 
       #cursor-aura.active {
@@ -401,50 +473,49 @@
         }
       }
 
-      /* Pulse animation for call-to-action elements */
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .pulse-animate {
-        animation: pulse 2s infinite;
-      }
-
-      /* Floating animation for profile image */
-      @keyframes float {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
-      }
-
-      .float-animate {
-        animation: float 6s ease-in-out infinite;
-      }
-
       /* Gradient text for headings */
       .gradient-text {
-        background: linear-gradient(90deg, #0ea5e9, #3b82f6);
+        background: linear-gradient(90deg, #38BDF8, #60A5FA);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        background-size: 200% auto;
+        animation: text-gradient 3s linear infinite;
+      }
+      
+      /* Glow effect for interactive elements */
+      .glow-effect {
+        transition: box-shadow 0.3s ease;
+      }
+      .glow-effect:hover {
+        box-shadow: 0 0 15px rgba(56, 182, 255, 0.5);
+      }
+      
+      /* Glass morphism effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1F2937;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #374151;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4B5563;
       }
     </style>
   </head>
-  <body class="text-gray-700">
+  <body class="text-gray-300">
     <div id="cursor-aura"></div>
     <div class="nav-indicator"></div>
 
@@ -461,7 +532,7 @@
           <a
             href="https://github.com/AbdullahbinTahir42"
             target="_blank"
-            class="px-3 py-2 text-gray-600 hover:text-sky-600 transition-colors"
+            class="px-3 py-2 text-gray-400 hover:text-sky-400 transition-colors"
           >
             <i class="fab fa-github text-lg"></i>
           </a>
@@ -508,14 +579,14 @@
         <img
           src="https://placehold.co/150x150/0EA5E9/FFFFFF?text=AT&font=Inter"
           alt="Abdullah Tahir"
-          class="w-40 h-40 rounded-full mx-auto mb-8 shadow-xl border-4 border-white float-animate"
+          class="w-40 h-40 rounded-full mx-auto mb-8 shadow-xl border-4 border-sky-500 float-animate glow-effect"
         />
         <h1 class="text-5xl md:text-6xl font-bold mb-4 gradient-text">
           Abdullah Tahir
         </h1>
-        <p class="text-2xl text-gray-600 mb-8">Web & AI Developer</p>
+        <p class="text-2xl text-sky-300 mb-8">Web & AI Developer</p>
         <p
-          class="max-w-3xl mx-auto text-gray-700 leading-relaxed text-lg mb-10"
+          class="max-w-3xl mx-auto text-gray-300 leading-relaxed text-lg mb-10"
         >
           I'm a backend developer skilled in Python, Django, and FastAPI. I
           build scalable web apps and APIs, and have hands-on experience
@@ -526,14 +597,14 @@
           <a
             href="https://linkedin.com/in/abdullah-tahir-23ntucs1004"
             target="_blank"
-            class="text-sky-600 hover:text-sky-800 transition-all duration-300 transform hover:scale-110"
+            class="text-sky-400 hover:text-sky-300 transition-all duration-300 transform hover:scale-110 glow-effect rounded-full p-2"
           >
             <i class="fab fa-linkedin fa-3x"></i>
           </a>
           <a
             href="https://github.com/AbdullahbinTahir42"
             target="_blank"
-            class="text-gray-700 hover:text-gray-900 transition-all duration-300 transform hover:scale-110"
+            class="text-gray-300 hover:text-white transition-all duration-300 transform hover:scale-110 glow-effect rounded-full p-2"
           >
             <i class="fab fa-github fa-3x"></i>
           </a>
@@ -541,87 +612,87 @@
       </div>
     </section>
 
-    <section id="skills" class="py-20 bg-white fade-in-section">
+    <section id="skills" class="py-20 bg-gray-900 fade-in-section">
       <div class="container mx-auto px-6">
         <h2 class="section-title">My Expertise</h2>
         <div
           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-5xl mx-auto"
         >
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-sky-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-sky-400 mb-4">
               <i class="fas fa-code"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">Python Programming</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">Python Programming</h3>
             <span class="skill-badge">Good</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-green-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-green-400 mb-4">
               <i class="fab fa-python"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">Django Framework</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">Django Framework</h3>
             <span class="skill-badge">Good</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-blue-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-blue-400 mb-4">
               <i class="fas fa-rocket"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">FastAPI Framework</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">FastAPI Framework</h3>
             <span class="skill-badge">Good</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-indigo-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-indigo-400 mb-4">
               <i class="fas fa-database"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">SQL & Databases</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">SQL & Databases</h3>
             <span class="skill-badge">Good</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-purple-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-purple-400 mb-4">
               <i class="fas fa-cogs"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">RESTful APIs</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">RESTful APIs</h3>
             <span class="skill-badge">Good</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-orange-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-orange-400 mb-4">
               <i class="fab fa-html5"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">HTML/CSS</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">HTML/CSS</h3>
             <span class="skill-badge">Moderate</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-pink-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-pink-400 mb-4">
               <i class="fas fa-brain"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">AI/ML Integration</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">AI/ML Integration</h3>
             <span class="skill-badge">Hands-on</span>
           </div>
-          <div class="card p-6 text-center">
-            <div class="text-4xl text-red-500 mb-4">
+          <div class="card p-6 text-center glass">
+            <div class="text-4xl text-red-400 mb-4">
               <i class="fas fa-chart-bar"></i>
             </div>
-            <h3 class="font-semibold text-xl mb-2">Matplotlib</h3>
+            <h3 class="font-semibold text-xl mb-2 text-white">Matplotlib</h3>
             <span class="skill-badge">Moderate</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="py-20 bg-gray-100 fade-in-section">
+    <section id="projects" class="py-20 bg-gray-800 fade-in-section">
       <div class="container mx-auto px-6">
         <h2 class="section-title">Featured Projects</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/A5B4FC/3730A3?text=Resume+Analyzer&font=Inter"
+              src="https://placehold.co/600x400/1F2937/38BDF8?text=Resume+Analyzer&font=Inter"
               alt="Resume Analyzer Project"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Resume Analyzer
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 A Python and Machine Learning project to analyze CVs (3rd
                 semester project).
               </p>
@@ -634,23 +705,23 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/3rd-Semester-project"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
           </div>
 
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/86EFAC/166534?text=Online+Study+App&font=Inter"
+              src="https://placehold.co/600x400/1F2937/34D399?text=Online+Study+App&font=Inter"
               alt="Online Study App Project"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Online Study App
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 Built using Django backend, similar to an online rooms system.
               </p>
               <div class="mb-4">
@@ -660,23 +731,23 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/studyapp"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
           </div>
 
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/FCD34D/B45309?text=Inventory+System&font=Inter"
+              src="https://placehold.co/600x400/1F2937/FBBF24?text=Inventory+System&font=Inter"
               alt="Inventory Management System Project"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Inventory Management System
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 Built using FastAPI and SQLAlchemy with SQLite for managing
                 products and stock via RESTful APIs.
               </p>
@@ -690,23 +761,23 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/inventory_system_FastAPI"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
           </div>
 
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/FDA4AF/9F1239?text=Candy+Crush&font=Inter"
+              src="https://placehold.co/600x400/1F2937/F472B6?text=Candy+Crush&font=Inter"
               alt="Candy Crush Game"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Candy Crush-inspired Game
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 Made in C++ using a function-based approach (1st semester
                 project).
               </p>
@@ -716,23 +787,23 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/First-Semester"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
           </div>
 
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/7DD3FC/075985?text=Space+Invaders&font=Inter"
+              src="https://placehold.co/600x400/1F2937/60A5FA?text=Space+Invaders&font=Inter"
               alt="Space Invader Game"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Space Invader Game
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 Developed using Pygame for practicing 2D game development.
               </p>
               <div class="mb-4">
@@ -742,23 +813,23 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/SpaceInvader"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
           </div>
 
-          <div class="card">
+          <div class="card glass">
             <img
-              src="https://placehold.co/600x400/93C5FD/1E40AF?text=Finance+Tracker+App&font=Inter"
+              src="https://placehold.co/600x400/1F2937/818CF8?text=Finance+Tracker+App&font=Inter"
               alt="Finance Tracker Project"
               class="w-full h-52 object-cover"
             />
             <div class="p-6">
-              <h3 class="text-2xl font-semibold mb-3 text-sky-700">
+              <h3 class="text-2xl font-semibold mb-3 text-sky-400">
                 Finance Tracker
               </h3>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-300 mb-4">
                 A Python application for tracking personal finances, featuring
                 data visualization with Matplotlib.
               </p>
@@ -771,7 +842,7 @@
               <a
                 href="https://github.com/AbdullahbinTahir42/LearnPython"
                 target="_blank"
-                class="project-link pulse-animate"
+                class="project-link"
                 ><i class="fab fa-github mr-2"></i>View Code</a
               >
             </div>
@@ -780,36 +851,36 @@
       </div>
     </section>
 
-    <section id="education" class="py-20 bg-white fade-in-section">
+    <section id="education" class="py-20 bg-gray-900 fade-in-section">
       <div class="container mx-auto px-6">
         <h2 class="section-title">Education</h2>
         <div
-          class="max-w-3xl mx-auto bg-sky-50 rounded-xl shadow-lg p-10 border border-sky-200"
+          class="max-w-3xl mx-auto bg-gray-800 rounded-xl shadow-lg p-10 border border-gray-700 glass"
         >
           <div class="flex items-start md:items-center">
             <div
-              class="bg-sky-500 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl mr-6 shadow-md"
+              class="bg-sky-500 text-white rounded-full h-16 w-16 flex items-center justify-center text-2xl mr-6 shadow-md glow-effect"
             >
               <i class="fas fa-graduation-cap"></i>
             </div>
             <div>
-              <h3 class="text-2xl font-semibold text-sky-700 mb-1">
+              <h3 class="text-2xl font-semibold text-sky-400 mb-1">
                 BS Artificial Intelligence
               </h3>
-              <p class="text-gray-700 text-lg">
+              <p class="text-gray-300 text-lg">
                 National Textile University (NTU), Faisalabad
               </p>
-              <p class="text-md text-gray-500">Sep 2023 – Present</p>
+              <p class="text-md text-gray-400">Sep 2023 – Present</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="py-20 bg-sky-700 text-sky-50 fade-in-section">
+    <section id="contact" class="py-20 bg-gray-800 fade-in-section">
       <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
-        <p class="max-w-lg mx-auto mb-10 text-lg">
+        <h2 class="text-4xl font-bold mb-6 text-white">Get In Touch</h2>
+        <p class="max-w-lg mx-auto mb-10 text-lg text-gray-300">
           I'm always open to discussing new projects, creative ideas, or
           opportunities to be part of your visions. Feel free to reach out!
         </p>
@@ -818,16 +889,16 @@
         >
           <a
             href="mailto:abdullahbintahir42@gmail.com"
-            class="flex items-center hover:text-sky-200 transition-colors duration-200"
+            class="flex items-center hover:text-sky-400 transition-colors duration-200 text-gray-300"
           >
-            <i class="fas fa-envelope fa-fw mr-3 text-xl"></i>
+            <i class="fas fa-envelope fa-fw mr-3 text-xl text-sky-400"></i>
             abdullahbintahir42@gmail.com
           </a>
-          <span class="flex items-center">
-            <i class="fas fa-phone fa-fw mr-3 text-xl"></i> +92 304 5972323
+          <span class="flex items-center text-gray-300">
+            <i class="fas fa-phone fa-fw mr-3 text-xl text-sky-400"></i> +92 304 5972323
           </span>
-          <span class="flex items-center">
-            <i class="fas fa-map-marker-alt fa-fw mr-3 text-xl"></i> Faisalabad,
+          <span class="flex items-center text-gray-300">
+            <i class="fas fa-map-marker-alt fa-fw mr-3 text-xl text-sky-400"></i> Faisalabad,
             Pakistan
           </span>
         </div>
@@ -835,14 +906,14 @@
           <a
             href="https://linkedin.com/in/abdullah-tahir-23ntucs1004"
             target="_blank"
-            class="hover:text-sky-200 transition-all duration-300 transform hover:scale-110"
+            class="hover:text-sky-400 transition-all duration-300 transform hover:scale-110 text-sky-500"
           >
             <i class="fab fa-linkedin fa-4x"></i>
           </a>
           <a
             href="https://github.com/AbdullahbinTahir42"
             target="_blank"
-            class="hover:text-sky-200 transition-all duration-300 transform hover:scale-110"
+            class="hover:text-white transition-all duration-300 transform hover:scale-110 text-gray-400"
           >
             <i class="fab fa-github fa-4x"></i>
           </a>
@@ -850,7 +921,7 @@
       </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <footer class="bg-gray-900 text-gray-500 py-10 text-center border-t border-gray-800">
       <p class="mb-2">
         &copy; <span id="currentYear"></span> Abdullah Tahir. All rights
         reserved.
@@ -1044,10 +1115,10 @@
       const projectLinks = document.querySelectorAll(".project-link");
       projectLinks.forEach((link) => {
         link.addEventListener("mouseenter", () => {
-          link.classList.add("pulse-animate");
+          link.classList.add("animate-pulse");
         });
-        link.addEventListener("animationend", () => {
-          link.classList.remove("pulse-animate");
+        link.addEventListener("mouseleave", () => {
+          link.classList.remove("animate-pulse");
         });
       });
     </script>
